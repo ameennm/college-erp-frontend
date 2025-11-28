@@ -1,4 +1,4 @@
-import { Chip, IconButton } from '@mui/material';
+import { Chip, IconButton, Box, Typography } from '@mui/material';
 import { Edit, Delete } from '@mui/icons-material';
 import { useDataStore } from '../../../store/dataStore';
 import DataTable from '../../shared/DataTable';
@@ -42,10 +42,13 @@ export default function StudentList() {
   ];
 
   return (
-    <DataTable
-      rows={students}
-      columns={columns}
-      exportFilename="Students_List"
-    />
+    <Box p={{ xs: 2, sm: 3 }}>
+      <Typography variant="h5" gutterBottom>Student Management</Typography>
+      <DataTable
+        rows={students}
+        columns={columns}
+        exportFilename="Students_List"
+      />
+    </Box>
   );
 }

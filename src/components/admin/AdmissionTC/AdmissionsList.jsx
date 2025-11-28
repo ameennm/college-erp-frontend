@@ -20,7 +20,7 @@ export default function AdmissionsList() {
   ];
 
   return (
-    <Box p={3}>
+    <Box p={{ xs: 2, sm: 3 }}>
       <Typography variant="h5" gutterBottom>Admissions</Typography>
       <DataTable rows={admissions} columns={columns} />
     </Box>

@@ -15,9 +15,9 @@ export default function LeaveList() {
     { field: 'leaveType', headerName: 'Type', width: 120 },
     { field: 'fromDate', headerName: 'From', width: 120 },
     { field: 'reason', headerName: 'Reason', width: 250 },
-    { 
-      field: 'status', 
-      headerName: 'Status', 
+    {
+      field: 'status',
+      headerName: 'Status',
       width: 150,
       renderCell: (p) => (
         <Chip label={p.value} color={p.value === 'approved' ? 'success' : p.value === 'rejected' ? 'error' : 'warning'} />
@@ -37,7 +37,7 @@ export default function LeaveList() {
   ];
 
   return (
-    <Box p={3}>
+    <Box p={{ xs: 2, sm: 3 }}>
       <Typography variant="h5" gutterBottom>Leave Management</Typography>
       <DataTable rows={leaveApplications} columns={columns} />
     </Box>

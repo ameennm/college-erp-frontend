@@ -17,8 +17,8 @@ export default function ExamScheduler() {
         return (
           <Grid container spacing={2} mt={2}>
             <Grid item xs={12}><TextField fullWidth label="Exam Name" /></Grid>
-            <Grid item xs={6}><TextField fullWidth type="date" label="Start Date" InputLabelProps={{shrink: true}} /></Grid>
-            <Grid item xs={6}><TextField fullWidth type="date" label="End Date" InputLabelProps={{shrink: true}} /></Grid>
+            <Grid item xs={12} sm={6}><TextField fullWidth type="date" label="Start Date" InputLabelProps={{ shrink: true }} /></Grid>
+            <Grid item xs={12} sm={6}><TextField fullWidth type="date" label="End Date" InputLabelProps={{ shrink: true }} /></Grid>
           </Grid>
         );
       case 1:
@@ -38,13 +38,15 @@ export default function ExamScheduler() {
   return (
     <Box p={3}>
       <Typography variant="h5" gutterBottom>Schedule New Exam</Typography>
-      <Stepper activeStep={activeStep}>
-        {steps.map(label => <Step key={label}><StepLabel>{label}</StepLabel></Step>)}
-      </Stepper>
-      
+      <Box sx={{ width: '100%', overflowX: 'auto' }}>
+        <Stepper activeStep={activeStep} alternativeLabel sx={{ minWidth: { xs: '100%', sm: 500 } }}>
+          {steps.map(label => <Step key={label}><StepLabel>{label}</StepLabel></Step>)}
+        </Stepper>
+      </Box>
+
       <Box mt={2}>
         {getStepContent(activeStep)}
-        
+
         <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
           <Button disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>Back</Button>
           <Box sx={{ flex: '1 1 auto' }} />

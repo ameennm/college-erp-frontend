@@ -17,15 +17,15 @@ export default function FeeDashboard() {
     { field: 'amount', headerName: 'Total', width: 120 },
     { field: 'balance', headerName: 'Balance', width: 120 },
     { field: 'dueDate', headerName: 'Due Date', width: 150 },
-    { 
-      field: 'status', 
-      headerName: 'Status', 
+    {
+      field: 'status',
+      headerName: 'Status',
       width: 120,
       renderCell: (params) => (
-        <Chip 
-          label={params.value} 
-          color={params.value === 'paid' ? 'success' : params.value === 'pending' ? 'error' : 'warning'} 
-          size="small" 
+        <Chip
+          label={params.value}
+          color={params.value === 'paid' ? 'success' : params.value === 'pending' ? 'error' : 'warning'}
+          size="small"
         />
       )
     }
@@ -33,22 +33,34 @@ export default function FeeDashboard() {
 
   return (
     <Box>
-      <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
+      <Box
+        display="flex"
+        flexDirection={{ xs: 'column', sm: 'row' }}
+        justifyContent="space-between"
+        alignItems={{ xs: 'stretch', sm: 'center' }}
+        gap={2}
+        mb={3}
+      >
         <Typography variant="h4">Fee Management</Typography>
         <Button variant="contained">Add Fee Demand</Button>
       </Box>
 
-      <Box display="flex" gap={3} mb={4}>
-        <Box flex={1}><StatsCard title="Total Demand" value={`₹${(totalDemand/100000).toFixed(2)}L`} icon={<AttachMoney />} color="#4A90E2" /></Box>
-        <Box flex={1}><StatsCard title="Collected" value={`₹${(totalCollected/100000).toFixed(2)}L`} icon={<AttachMoney />} color="#50C878" /></Box>
-        <Box flex={1}><StatsCard title="Pending" value={`₹${(totalPending/100000).toFixed(2)}L`} icon={<MoneyOff />} color="#FF6B6B" /></Box>
+      <Box
+        display="grid"
+        gridTemplateColumns={{ xs: '1fr', md: 'repeat(3, 1fr)' }}
+        gap={3}
+        mb={4}
+      >
+        <StatsCard title="Total Demand" value={`₹${(totalDemand / 100000).toFixed(2)}L`} icon={<AttachMoney />} color="#6366F1" />
+        <StatsCard title="Collected" value={`₹${(totalCollected / 100000).toFixed(2)}L`} icon={<AttachMoney />} color="#10B981" />
+        <StatsCard title="Pending" value={`₹${(totalPending / 100000).toFixed(2)}L`} icon={<MoneyOff />} color="#EF4444" />
       </Box>
 
       <Typography variant="h6" gutterBottom>Recent Fee Records</Typography>
-      <DataTable 
-        rows={fees} 
-        columns={columns} 
-        exportFilename="Fee_Report" 
+      <DataTable
+        rows={fees}
+        columns={columns}
+        exportFilename="Fee_Report"
       />
     </Box>
   );

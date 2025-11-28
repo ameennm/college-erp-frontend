@@ -27,7 +27,7 @@ export default function AdminLayout() {
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
   const handleMenu = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
-  
+
   const handleLogout = () => {
     logout();
     navigate('/login');
@@ -44,7 +44,7 @@ export default function AdminLayout() {
       <List>
         {menuItems.map((item) => (
           <ListItem key={item.text} disablePadding>
-            <ListItemButton 
+            <ListItemButton
               selected={location.pathname === item.path}
               onClick={() => navigate(item.path)}
             >
@@ -131,7 +131,14 @@ export default function AdminLayout() {
       </Box>
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` }, minHeight: '100vh', bgcolor: '#f5f5f5' }}
+        sx={{
+          flexGrow: 1,
+          p: { xs: 2, sm: 3 },
+          width: { xs: '100%', sm: `calc(100% - ${drawerWidth}px)` },
+          minHeight: '100vh',
+          bgcolor: '#f5f5f5',
+          overflowX: 'hidden'
+        }}
       >
         <Toolbar />
         <Outlet />
