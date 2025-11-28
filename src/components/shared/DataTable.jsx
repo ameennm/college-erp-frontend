@@ -20,16 +20,25 @@ export default function DataTable({ columns, rows, onSearch, exportFilename, ...
 
   return (
     <Box>
-      <Box display="flex" justifyContent="space-between" mb={2}>
+      <Box
+        display="flex"
+        flexDirection={{ xs: 'column', sm: 'row' }}
+        justifyContent="space-between"
+        alignItems={{ xs: 'stretch', sm: 'center' }}
+        gap={2}
+        mb={2}
+      >
         <TextField
           size="small"
           placeholder="Search..."
           value={searchText}
           onChange={handleSearch}
-          sx={{ width: 300 }}
+          sx={{ width: { xs: '100%', sm: 300 } }}
         />
         {exportFilename && (
-          <Button variant="outlined" onClick={handleExport}>Export to Excel</Button>
+          <Button variant="outlined" onClick={handleExport} fullWidth={false} sx={{ width: { xs: '100%', sm: 'auto' } }}>
+            Export to Excel
+          </Button>
         )}
       </Box>
       <DataGrid

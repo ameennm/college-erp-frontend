@@ -23,8 +23,8 @@ export default function AttendanceOverview() {
   return (
     <Box p={3}>
       <Typography variant="h5" gutterBottom>Attendance Overview</Typography>
-      
-      <Box display="flex" gap={4} mb={3}>
+
+      <Box display="flex" flexWrap="wrap" gap={{ xs: 2, sm: 4 }} mb={3}>
         <Typography color="success.main" variant="h6">Present: {stats.present}</Typography>
         <Typography color="error.main" variant="h6">Absent: {stats.absent}</Typography>
         <Typography color="warning.main" variant="h6">Late: {stats.late}</Typography>
